@@ -31,7 +31,8 @@ class Main(View):
                     error = message[3]
                     messages_list.append(f"{line_number}: {error}")
             
-
+        if len(messages_list) == 0:
+            messages_list.append("All clear, no errors found")
         return render(request, "main.html", 
                       {"results": messages_list,
                        "content": request.POST["code"]})
