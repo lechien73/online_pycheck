@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*4dte@76_3(vua_x*5@^pt^ikk9xr7(!+w0yzld!rljej0h*&x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["8000-lechien73-onlinepycheck-8dye7yjx8z2.ws-eu73.gitpod.io", "localhost"]
 
 
 # Application definition
@@ -80,6 +80,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-lechien73-onlinepycheck-8dye7yjx8z2.ws-eu73.gitpod.io']
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 # Password validation
