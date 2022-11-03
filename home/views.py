@@ -17,7 +17,8 @@ class Main(View):
             with open(f"{tmpdirname}/code.py", "w") as file:
                 file.write(request.POST["code"])
             
-            style = pycodestyle.StyleGuide(show_source=False, quiet=False, reporter=pycodestyle.StandardReport)
+            style = pycodestyle.StyleGuide(show_source=False, quiet=False, \
+                                           reporter=pycodestyle.StandardReport, offset=4)
             sys.stdout = buffer = StringIO()
             results = style.check_files([f"{tmpdirname}/code.py"])
             messages = buffer.getvalue().split("\n")
