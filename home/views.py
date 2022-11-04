@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.views import View
 import tempfile
 import pycodestyle
@@ -30,10 +31,8 @@ class Main(View):
                     message = message.split(":")
                     line_number = message[1]
                     error = message[3]
-                    messages_list.append(f"{line_number}: {error}")
+                    messages_list.append(f"{line_number}: {error}\n")
             
         if len(messages_list) == 0:
             messages_list.append("All clear, no errors found")
-        return render(request, "main.html", 
-                      {"results": messages_list,
-                       "content": request.POST["code"]})
+        return HttpResponse(messages_list)
