@@ -36,10 +36,15 @@ editor.getSession().on("change", function (e) {
 });
 
 document.getElementById("mode-select").addEventListener("click", (e) => {
+    let container = document.getElementById("theme-area");
     if (e.target.matches(':checked')) {
         editor.setTheme("ace/theme/katzenmilch");
+        container.classList.add("light");
+        container.classList.remove("dark");
     } else {
         editor.setTheme("ace/theme/terminal");
+        container.classList.add("dark");
+        container.classList.remove("light");
     }
 });
 

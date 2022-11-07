@@ -11,3 +11,19 @@
  .heading {
      font-family: Montserrat;
  }
+
+ .dark {
+     background-color: grey;
+     color: white;
+ }
+
+ .light {
+     background-color: white;
+     color: #333;
+ }
+
+ #theme-area {
+     margin-top: 10px;
+     height: calc(100vh - 117px);
+     padding: 20px;
+ }
