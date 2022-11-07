@@ -46,3 +46,5 @@ document.getElementById("mode-select").addEventListener("click", (e) => {
 document.getElementById("editor").addEventListener("click", (e) => {
     editor.setHighlightActiveLine(false);
 });
+
+postForm();

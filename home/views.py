@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views import View
 import tempfile
 import pycodestyle
+import requests
 from io import StringIO
 import sys
 
@@ -61,3 +62,23 @@ class Main(View):
         if len(messages_list) == 0:
             messages_list.append("All clear, no errors found")
         return HttpResponse(messages_list)
+
+
+class Api(View):
+
+    def get(self, request, url, *args, **kwargs):
+        
+        if url[0:5] == "https":
+            url = url.split("https:/")
+            response = requests.get("https://" + url[1])
+            if response.status_code == 200:
+                content = response.content.decode("utf-8")
+            else:
+                content = "Error loading the Python file\n"
+                content += f"Status code: {response.status_code}"
+        else:
+            content = "Python file could not be loaded\nURL scheme must be "
+            content += f"https://\nYou supplied: {url}"
+
+        return render(request, "main.html", context={"content": content})
+

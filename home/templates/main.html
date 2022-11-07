@@ -41,7 +41,7 @@
                         <h4 class="heading">Settings:</h4>
                         <form id="codeform" method="POST">
                             {% csrf_token %}
-                            <textarea type="hidden" name="code" id="code"></textarea>
+                            <textarea type="hidden" name="code" id="code">{{ content }}</textarea>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" value="" id="mode-select">
                                 <label class="form-check-label" for="mode-select">
