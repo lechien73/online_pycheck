@@ -31,7 +31,7 @@ class Main(View):
                     message = message.split(":")
                     line_number = message[1]
                     error = message[3]
-                    messages_list.append(f"{line_number}: {error}\n")
+                    messages_list.append(f"<a href='#' onclick='goto({line_number})'>{line_number}</a>: {error}<br>")
             
         if len(messages_list) == 0:
             messages_list.append("All clear, no errors found")
