@@ -6,33 +6,58 @@ import pycodestyle
 from io import StringIO
 import sys
 
+
 class Main(View):
+    """
+    The get request simply renders the editor
+    The post request runs pycodestyle in a temporary directory
+    """
 
     def get(self, request, *args, **kwargs):
-        return render(request, "main.html", {"results": ""})
-    
+        """
+        As simple a view as it's possible to get
+        """
+        return render(request, "main.html")
+
     def post(self, request, *args, **kwargs):
+        """
+        Hmmm...some weirdness here!
+        1. Get the contents of the editor
+        2. Create a temporary directory and write it there
+        3. Divert the stdout to a buffer
+        4. Run pycodestyle against the file
+        5. Put stdout back to normal
+
+        Why the stdout hack?? Seems a bit hacky, Matt!
+        Because I could not figure out how to get pycodestyle
+        to give me line numbers in any of the reporters. So,
+        I take what is spat out to stdout and mangle it.
+        Clear?
+        """
 
         with tempfile.TemporaryDirectory() as tmpdirname:
 
             with open(f"{tmpdirname}/code.py", "w") as file:
                 file.write(request.POST["code"])
-            
-            style = pycodestyle.StyleGuide(show_source=False, quiet=False, \
-                                           reporter=pycodestyle.StandardReport, offset=4)
+
+            style = pycodestyle.StyleGuide(show_source=False, quiet=False,
+                                           reporter=pycodestyle.StandardReport,
+                                           offset=4)
             sys.stdout = buffer = StringIO()
             results = style.check_files([f"{tmpdirname}/code.py"])
             messages = buffer.getvalue().split("\n")
             sys.stdout = sys.__stdout__
-            
+
             messages_list = []
             for message in messages:
                 if len(message) > 0:
                     message = message.split(":")
                     line_number = message[1]
                     error = message[3]
-                    messages_list.append(f"<a href='#' onclick='goto({line_number})'>{line_number}</a>: {error}<br>")
-            
+                    msg = f"<a href='#' onclick='goto({line_number})'>"
+                    msg += f"{line_number}</a>: {error}<br>"
+                    messages_list.append(msg)
+
         if len(messages_list) == 0:
             messages_list.append("All clear, no errors found")
         return HttpResponse(messages_list)

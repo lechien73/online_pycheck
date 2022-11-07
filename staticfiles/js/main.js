@@ -37,8 +37,12 @@ editor.getSession().on("change", function (e) {
 
 document.getElementById("mode-select").addEventListener("click", (e) => {
     if (e.target.matches(':checked')) {
-        editor.setTheme("ace/theme/chrome");
+        editor.setTheme("ace/theme/katzenmilch");
     } else {
         editor.setTheme("ace/theme/twilight");
     }
-})
+});
+
+document.getElementById("editor").addEventListener("click", (e) => {
+    editor.setHighlightActiveLine(false);
+});
