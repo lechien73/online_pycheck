@@ -69,7 +69,7 @@ class Api(View):
     def get(self, request, url, *args, **kwargs):
         
         if url[0:5] == "https":
-            url = url.split("https:/")
+            url = url.split("https://")
             response = requests.get("https://" + url[1])
             if response.status_code == 200:
                 content = response.content.decode("utf-8")
