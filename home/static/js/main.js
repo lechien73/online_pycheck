@@ -3,7 +3,7 @@ editor.session.setMode("ace/mode/python");
 editor = ace.edit("editor");
 editor.setOption("wrap", true);
 editor.setOption("fontSize", 12);
-editor.setTheme("ace/theme/twilight");
+editor.setTheme("ace/theme/terminal");
 editor.setHighlightActiveLine(false);
 editor.focus();
 
@@ -39,7 +39,7 @@ document.getElementById("mode-select").addEventListener("click", (e) => {
     if (e.target.matches(':checked')) {
         editor.setTheme("ace/theme/katzenmilch");
     } else {
-        editor.setTheme("ace/theme/twilight");
+        editor.setTheme("ace/theme/terminal");
     }
 });
 
