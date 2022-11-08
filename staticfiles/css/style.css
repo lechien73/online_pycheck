@@ -13,17 +13,21 @@
  }
 
  .dark {
-     background-color: grey;
-     color: white;
+     background-color: #505050;
+     color: #fafafa;
  }
 
  .light {
-     background-color: white;
-     color: #333;
+     background-color: #fafafa;
+     color: #505050;
+ }
+
+ .dark #results a {
+     color: #ced4da;
  }
 
  #theme-area {
-     margin-top: 10px;
-     height: calc(100vh - 117px);
+     margin: 0;
+     height: 100vh;
      padding: 20px;
  }

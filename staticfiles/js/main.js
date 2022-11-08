@@ -37,14 +37,17 @@ editor.getSession().on("change", function (e) {
 
 document.getElementById("mode-select").addEventListener("click", (e) => {
     let container = document.getElementById("theme-area");
+    let logo = document.getElementById("logo");
     if (e.target.matches(':checked')) {
         editor.setTheme("ace/theme/katzenmilch");
         container.classList.add("light");
         container.classList.remove("dark");
+        logo.src = "https://codeinstitute.s3.amazonaws.com/assets/logo.png";
     } else {
         editor.setTheme("ace/theme/terminal");
         container.classList.add("dark");
         container.classList.remove("light");
+        logo.src = "https://codeinstitute.s3.amazonaws.com/assets/logo_white.png";
     }
 });
 
