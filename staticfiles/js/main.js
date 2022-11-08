@@ -44,7 +44,16 @@ async function postForm() {
     const data = await response.text();
 
     if (response.ok) {
-        document.getElementById("results").innerHTML = data;
+        let results = document.getElementById("results");
+        let overflow = document.getElementById("overflow");
+        results.innerHTML = data;
+
+        if (results.scrollHeight > results.clientHeight) {
+            overflow.innerText = "Scroll to see all errors";
+        } else {
+            overflow.innerText = "";
+        }
+
     } else {
         throw new Error(data.error);
     }
