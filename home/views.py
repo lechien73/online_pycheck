@@ -67,7 +67,7 @@ class Main(View):
 class Api(View):
 
     def get(self, request, url, *args, **kwargs):
-        
+
         if url[0:5] == "https":
             url = url.split("https://")
             response = requests.get("https://" + url[1])
@@ -81,4 +81,3 @@ class Api(View):
             content += f"https://\nYou supplied: {url}"
 
         return render(request, "main.html", context={"content": content})
-
