@@ -12,6 +12,26 @@ function goto(lineNumber) {
     editor.setHighlightActiveLine(true);
 }
 
+function setLight() {
+    let container = document.getElementById("theme-area");
+    let logo = document.getElementById("logo");
+    editor.setTheme("ace/theme/katzenmilch");
+    container.classList.add("light");
+    container.classList.remove("dark");
+    logo.src = "https://codeinstitute.s3.amazonaws.com/assets/logo.png";
+    localStorage.setItem('mode', "light");
+}
+
+function setDark() {
+    let container = document.getElementById("theme-area");
+    let logo = document.getElementById("logo");
+    editor.setTheme("ace/theme/terminal");
+    container.classList.add("dark");
+    container.classList.remove("light");
+    logo.src = "https://codeinstitute.s3.amazonaws.com/assets/logo_white.png";
+    localStorage.setItem('mode', "dark");
+}
+
 async function postForm() {
 
     const form = new FormData(document.getElementById("codeform"));
@@ -36,18 +56,11 @@ editor.getSession().on("change", function (e) {
 });
 
 document.getElementById("mode-select").addEventListener("click", (e) => {
-    let container = document.getElementById("theme-area");
-    let logo = document.getElementById("logo");
+
     if (e.target.matches(':checked')) {
-        editor.setTheme("ace/theme/katzenmilch");
-        container.classList.add("light");
-        container.classList.remove("dark");
-        logo.src = "https://codeinstitute.s3.amazonaws.com/assets/logo.png";
+        setLight();
     } else {
-        editor.setTheme("ace/theme/terminal");
-        container.classList.add("dark");
-        container.classList.remove("light");
-        logo.src = "https://codeinstitute.s3.amazonaws.com/assets/logo_white.png";
+        setDark();
     }
 });
 
@@ -56,3 +69,9 @@ document.getElementById("editor").addEventListener("click", (e) => {
 });
 
 postForm();
+if (localStorage.getItem("mode") == "light") {
+    setLight();
+    document.getElementById("mode-select").setAttribute("checked", "true");
+} else {
+    setDark();
+}
