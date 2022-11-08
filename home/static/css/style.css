@@ -31,3 +31,8 @@
      height: 100vh;
      padding: 20px;
  }
+
+ #results {
+     height: 370px;
+     overflow-y: auto;
+ }
