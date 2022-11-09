@@ -49,7 +49,7 @@ async function postForm() {
         results.innerHTML = data;
 
         if (results.scrollHeight > results.clientHeight) {
-            overflow.innerText = "Scroll to see all errors";
+            overflow.innerText = "Scroll the results to see all errors";
         } else {
             overflow.innerText = "";
         }

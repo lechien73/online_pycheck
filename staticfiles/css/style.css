@@ -15,11 +15,17 @@
  .dark {
      background-color: #505050;
      color: #fafafa;
+     transition: 0.3s;
  }
 
  .light {
      background-color: #fafafa;
      color: #505050;
+     transition: 0.3s;
+ }
+
+ #logo {
+     transition: 0.3s;
  }
 
  .dark #results a {
