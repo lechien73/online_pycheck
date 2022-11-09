@@ -84,7 +84,7 @@ class Api(View):
                     content += f"# Status code: {response.status_code}"
         else:
             content = "# *** ERROR ***\n"
-            content = "# Python file could not be loaded\n# URL scheme "
+            content += "# Python file could not be loaded\n# URL scheme "
             content += f"must be https://\n# You supplied: {url}"
 
         return render(request, "main.html", context={"content": content})
