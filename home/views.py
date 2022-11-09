@@ -70,7 +70,7 @@ class Api(View):
 
         if url[0:5] == "https":
             url = url.split("https://")
-            if url[1][-3:] !== ".py":
+            if url[1][-3:] != ".py":
                 content = "Must be a Python file!"
                 content += "Extension is not .py"
             else:
