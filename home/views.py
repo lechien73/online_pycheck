@@ -71,17 +71,20 @@ class Api(View):
         if url[0:5] == "https":
             url = url.split("https://")
             if url[1][-3:] != ".py":
-                content = "Must be a Python file!\n"
-                content += "Extension is not .py"
+                content = "# *** ERROR ***\n"
+                content += "# Must be a Python file!\n"
+                content += "# Extension is not .py"
             else:
                 response = requests.get("https://" + url[1])
                 if response.status_code == 200:
                     content = response.content.decode("utf-8")
                 else:
-                    content = "Error loading the Python file\n"
-                    content += f"Status code: {response.status_code}"
+                    content = "# *** ERROR ***\n"
+                    content += "# Error loading the Python file\n"
+                    content += f"# Status code: {response.status_code}"
         else:
-            content = "Python file could not be loaded\nURL scheme must be "
-            content += f"https://\nYou supplied: {url}"
+            content = "# *** ERROR ***\n"
+            content = "# Python file could not be loaded\n# URL scheme "
+            content += f"must be https://\n# You supplied: {url}"
 
         return render(request, "main.html", context={"content": content})
