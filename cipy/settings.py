@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["pep8ish.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = ["pep8ci.herokuapp.com", "localhost"]
 
 
 # Application definition
@@ -83,7 +83,7 @@ DATABASES = {
     }
 }
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-lechien73-onlinepycheck-8dye7yjx8z2.ws-eu74.gitpod.io', 'https://pep8ish.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://pep8ci.herokuapp.com']
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
