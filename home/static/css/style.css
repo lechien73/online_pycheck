@@ -42,3 +42,26 @@
      height: 370px;
      overflow-y: auto;
  }
+
+ .mode {
+     height: 24px;
+     width: 24px;
+     margin: 0 4px;
+     display: inline-block;
+ }
+
+ .modes {
+     display: flex;
+     align-items: stretch;
+     justify-content: flex-start;
+     width: 30%;
+ }
+
+ .form-switch {
+     padding-left: 3em;
+     vertical-align: middle;
+ }
+
+ .form-check {
+     display: inline-block;
+ }
