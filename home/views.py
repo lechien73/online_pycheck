@@ -73,7 +73,7 @@ class Api(View):
             if url[1][-3:] != ".py":
                 content = "# *** ERROR ***\n"
                 content += "# Must be a Python file!\n"
-                content += "# Extension is not .py"
+                content += "# Extension is not .py\n"
             else:
                 response = requests.get("https://" + url[1])
                 if response.status_code == 200:
@@ -81,10 +81,10 @@ class Api(View):
                 else:
                     content = "# *** ERROR ***\n"
                     content += "# Error loading the Python file\n"
-                    content += f"# Status code: {response.status_code}"
+                    content += f"# Status code: {response.status_code}\n"
         else:
             content = "# *** ERROR ***\n"
             content += "# Python file could not be loaded\n# URL scheme "
-            content += f"must be https://\n# You supplied: {url}"
+            content += f"must be https://\n# You supplied: {url}\n"
 
         return render(request, "main.html", context={"content": content})
