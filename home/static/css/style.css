@@ -65,3 +65,7 @@
  .form-check {
      display: inline-block;
  }
+
+ .form-check-input:checked {
+     background-color: #505050;
+ }
